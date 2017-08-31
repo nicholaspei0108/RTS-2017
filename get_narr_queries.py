@@ -177,10 +177,6 @@ def get_narr_queries(narr_dict):
                         next_count += 1
 
                 narr_snippets[key][str(num_of_lines)] = str(snippets)
-                # try:
-                #     narr_snippets[key].append(str(snippets))
-                # except KeyError:
-                #     narr_snippets[key] = (str(snippets))
 
                 print("Start calculating TF-IDF and obtain top k...")
                 # mapped_stems = map_stems(str(snippets).lower().translate(str.maketrans('', '', string.punctuation)))
@@ -232,7 +228,7 @@ def get_narr_queries(narr_dict):
 
         print("Time spent: ", elapsed_time)
 
-    with open('narr_50_snippets.json', 'w', encoding='utf-8') as f:
+    with open('narr_snippets.json', 'w', encoding='utf-8') as f:
         json.dump(narr_snippets, f, ensure_ascii=False, indent=1)
 
     return narr_queries
@@ -252,7 +248,6 @@ orignal_query_file = "judged_topics"
 
 def main():
     narr_dict = get_narr_dict(orignal_query_file)
-    # desc_dict = get_desc_dict("RTS-2016-topics")
 
     narr_queries = get_narr_queries(narr_dict)
     narr_queries_json = get_narr_queries_json(narr_queries)
