@@ -70,7 +70,6 @@ def get_desc_queries(desc_dict):
             print(header)
 
             req = requests.get(url, params=para, headers=header)
-            # req = requests.get(url, params=para, headers=header)
             page = req.text
 
             soup = BeautifulSoup(page, 'lxml')
@@ -177,8 +176,7 @@ def get_desc_queries(desc_dict):
         elapsed_time = time.time() - start_time
 
         print("Time spent: ", elapsed_time)
-    # with open('desc_snippets.json', 'w', encoding='utf-8') as f:
-    with open('desc_30_snippets.json', 'w', encoding='utf-8') as f:
+    with open('desc_snippets.json', 'w', encoding='utf-8') as f:
         json.dump(desc_snippets, f, ensure_ascii=False, indent=1)
 
     return desc_queries
@@ -199,7 +197,6 @@ orignal_query_file = "judged_topics"
 
 def main():
     desc_dict = get_desc_dict(orignal_query_file)
-    # desc_dict = get_desc_dict("RTS-2016-topics")
     desc_queries = get_desc_queries(desc_dict)
     desc_queries_json = get_desc_queries_json(desc_queries)
 
