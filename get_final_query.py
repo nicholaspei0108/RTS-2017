@@ -13,7 +13,6 @@ def unique_list(l):
 def assign_weight(dict):
     weighted = {}
     i = 0
-    # prof_dict = get_profs(orignal_query_file)
     with open(orignal_query_file) as f:
         profiles = json.load(f)
 
@@ -35,19 +34,7 @@ def assign_weight(dict):
 
     return dict
 
-
-# def get_profs(orignal_query_file):
-#     prof_dict = {}
-#     with open(orignal_query_file) as f:
-#         profiles = json.load(f)
-#         for prof in profiles:
-#             prof_dict[prof["topid"]] = (prof["title"] + ' ' + prof["description"] + ' ' + prof["narrative"]).lower()
-#     print(prof_dict)
-#     return prof_dict
-
-
 def combine_query(title_query, desc_query, narr_query):
-# def combine_query(title_query, desc_query):
 
     title_dict = {}
     desc_dict = {}
@@ -86,10 +73,9 @@ def get_final_queries_json(final_dict):
 def main():
 
     final_dict = combine_query("title.json", "desc.json", "narr.json")
-    # final_dict = combine_query("title.json", "desc.json")
     final_queries_json = get_final_queries_json(final_dict)
 
-    with open('final_query_30snippets_nospecialchars.json', 'w', encoding='utf-8') as f:
+    with open('final_query.json', 'w', encoding='utf-8') as f:
         json.dump(final_queries_json, f, ensure_ascii=False, indent=1)
 
 
